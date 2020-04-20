@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.15)
+project(GearShaderTool)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/include)
+
+add_executable(GearShaderTool Source/main.cpp Source/ShaderReflection.cpp)
+
+if (CMAKE_BUILD_TYPE MATCHES "Debug")
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-cd.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-cored.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-cppd.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-glsld.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-hlsld.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-msld.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-reflectd.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Debug/spirv-cross-utild.lib)
+else()
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-c.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-core.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-cpp.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-glsl.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-hlsl.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-msl.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-reflect.lib)
+    target_link_libraries(GearShaderTool ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Spirv-Cross/Release/spirv-cross-util.lib)
+endif()
